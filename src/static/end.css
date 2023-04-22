@@ -1,0 +1,9 @@
+.contacts {
+    background-color: #2b2a33;
+    width: 100%;
+    height: 4vh;
+    padding: 0.3em;
+    position: fixed;
+    bottom: 0;
+    font-size: 1.4rem;
+}

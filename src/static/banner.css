@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+#arimg {
+    width: 10%;
+    border-radius: 50%;
+    border: 0.35vw solid #e6ece7;
+    margin: 1vw;
+}
+.arinames {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#ariname {
+    font-size: 5.5vw;
+}
+
+.contacts {
+    font-size: 2vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+#bio {
+    font-size: 1vw;
+}
