@@ -11,7 +11,7 @@ function getn(f,l,arr){
 }
 
 export default function Posts(){
-    const TOTALTOPS = 7;
+    const TOTALTOPS = 5;
     const [post, setPost] = React.useState(null);
     const [which,setWhich] = React.useState(0);
     const [set,setSet] = React.useState([0,TOTALTOPS-1]);
