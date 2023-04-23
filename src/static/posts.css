@@ -115,7 +115,7 @@
     margin-top: 3vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 .allposts span {
