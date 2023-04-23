@@ -30,6 +30,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: black;
 }
 #bio {
     font-size: 1vw;
