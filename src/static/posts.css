@@ -50,6 +50,7 @@
 }
 #date {
     color: rgba(255,255,255,0.523);
+    font-size: 1vw;
 }
 .html {
     font-size: 1vw;
@@ -86,7 +87,7 @@
         margin: 0.51%;
         width: 9.8%;
         height: auto;
-        border: 1% solid white;
+        border: 0.182rem solid white;
         border-radius: 50%;
         transition: 0.2s;
     }
