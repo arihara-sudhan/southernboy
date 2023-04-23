@@ -26,7 +26,7 @@
     margin: 0.51%;
     width: 6.8%;
     height: auto;
-    border: 0.1em solid white;
+    border: 0.23em solid white;
     border-radius: 50%;
     transition: 0.2s;
 }
@@ -65,6 +65,26 @@
     width: 80%;
 }
 @media only screen and (max-width: 830px) {
+    #allbut {
+        font-size: 3vw;
+    }
+    .topics {
+        background-color: #2b2a33;
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        border-radius: 0.2rem;
+        align-items: center;
+    }
+    .topics img {
+        margin: 0.51%;
+        width: 9.8%;
+        height: auto;
+        border: 1% solid white;
+        border-radius: 50%;
+        transition: 0.2s;
+    }
     .html {
         font-size: 2.3vw;
         font-weight: lighter;
@@ -74,13 +94,9 @@
     .posts {
         width: 100%;
     }
-}
-#nextbut {
-    font-size: 4%;
-}
-#prvbut {
-    font-size: 4%;
-    transform: scaleX(-1);
+    #nxtbut, #prvbut {
+        width: 3%;
+    }
 }
 .allposts {
     margin-top: 3vh;
@@ -92,4 +108,14 @@
 .allposts span {
     margin: 0.51rem;
     font-family: 8vw;
+}
+#nxtbut {
+    width: 4%;
+}
+#prvbut {
+    width: 4%;
+    transform: scaleX(-1);
+}
+#prvbut:hover, #nxtbut:hover {
+    width: 4.4%;
 }
