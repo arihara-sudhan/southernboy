@@ -32,13 +32,12 @@ export default function Posts(){
     logos = getn(set[0],set[1],logos);
     const posts = post.map((p) =>
         <div className='post'>
-              <span id='title'>{p.title}</span><br/>
-              <span id='date'>{p.feeds[0]}</span>
+              <span id='title'><h3>{p.title}<span id='date'>{p.feeds[0]}</span></h3></span><br/>
             <div className='html' dangerouslySetInnerHTML={{__html: p.feeds[1]}}></div>
         </div>  
   );
     let toshow = null;
-    if(showposts==1)
+    if(showposts===1)
       toshow = allposts;
     else
       toshow = posts[parseInt(which)]
@@ -50,7 +49,7 @@ export default function Posts(){
               setSet([set[0]-TOTALTOPS,set[0]-1])
           }}/>
           {logos}
-          <img src={nxtprv} alt='' style={{border:0,borderRadius:0}} id='nxtbut' onClick={()=>{
+          <img id='nxtbut' src={nxtprv} alt='' style={{border:0,borderRadius:0}} onClick={()=>{
             setSet([set[1]+1,set[1]+TOTALTOPS])
           }}/>
         </div>
