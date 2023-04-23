@@ -92,6 +92,9 @@
         text-align: justify;
         text-justify: inter-word;
     }
+    .html img {
+        width: 90%;
+    }
     .posts {
         width: 100%;
     }
