@@ -32,7 +32,7 @@ export default function Posts(){
     logos = getn(set[0],set[1],logos);
     const posts = post.map((p) =>
         <div className='post'>
-              <span id='title'><h3>{p.title}<span id='date'>{p.feeds[0]}</span></h3></span><br/>
+              <h3 id='title'>{p.title}<span id='date'>{p.feeds[0]}</span></h3>
             <div className='html' dangerouslySetInnerHTML={{__html: p.feeds[1]}}></div>
         </div>  
   );
