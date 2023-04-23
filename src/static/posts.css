@@ -52,6 +52,7 @@
 }
 #date {
     color: rgba(255,255,255,0.523);
+    font-size: 1vw;
 }
 .html {
     font-size: 1vw;
@@ -96,7 +97,11 @@
     .html img {
         width: 90%;
     }
-    .posts {
+    #title {
+        font-size: 3vw;
+        font-weight: bolder;
+    }
+        .posts {
         width: 100%;
     }
     #nxtbut, #prvbut {
