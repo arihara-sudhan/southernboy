@@ -12,6 +12,7 @@
     margin-bottom: 10vh;
     justify-content: center;
     align-items: center;
+    width: 70%;
 }
 .topics {
     background-color: #2b2a33;
@@ -97,10 +98,7 @@
     .posts {
         width: 100%;
     }
-    #nxtbut {
-        width: 2%;
-    }
-    #prvbut {
+    #nxtbut, #prvbut {
         width: 2%;
     }
     .html img {
