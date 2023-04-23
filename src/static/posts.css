@@ -12,7 +12,7 @@
     margin-bottom: 10vh;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 60%;
     margin-top: 1%;
 }
 .topics {
@@ -108,7 +108,7 @@
         width: 3%;
     }
     .blog-all {
-        width: 93%;
+        width: 95%;
     }
 }
 .allposts {
