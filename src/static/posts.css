@@ -12,7 +12,7 @@
     margin-bottom: 10vh;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 80%;
 }
 .topics {
     background-color: #2b2a33;
@@ -24,11 +24,11 @@
     align-items: center;
 }
 .topics img {
-    border-radius: 50%;
     margin: 0.51%;
-    width: 8.8%;
+    width: 6.8%;
     height: auto;
-    border-radius: 10%;
+    border: 0.23em solid white;
+    border-radius: 50%;
     transition: 0.2s;
 }
 #allbut {
@@ -51,7 +51,6 @@
 }
 #date {
     color: rgba(255,255,255,0.523);
-    font-size: 1vw;
 }
 .html {
     font-size: 1vw;
@@ -62,17 +61,12 @@
 .html img {
     margin: 0.41rem;
     margin-bottom: 0;
-    border-radius: 1rem;
 }
 .posts {
     width: 80%;
 }
 @media only screen and (max-width: 830px) {
-        #title {
-            font-size: 3.5vw;
-            font-weight: bolder;
-        }
-        #allbut {
+    #allbut {
         font-size: 3vw;
     }
     .topics {
@@ -88,10 +82,13 @@
         margin: 0.51%;
         width: 9.8%;
         height: auto;
+        border: 1% solid white;
+        border-radius: 50%;
         transition: 0.2s;
     }
     .html {
-        font-size: 2.7vw;
+        font-size: 2.3vw;
+        font-weight: lighter;
         text-align: justify;
         text-justify: inter-word;
     }
@@ -99,11 +96,7 @@
         width: 100%;
     }
     #nxtbut, #prvbut {
-        width: 2%;
-    }
-    .html img {
-        width: 80%;
-        border-radius: 1rem;
+        width: 3%;
     }
 }
 .allposts {
@@ -115,7 +108,7 @@
 }
 .allposts span {
     margin: 0.51rem;
-    font-size: 1vw;
+    font-family: 8vw;
 }
 #nxtbut {
     width: 4%;
@@ -123,4 +116,7 @@
 #prvbut {
     width: 4%;
     transform: scaleX(-1);
+}
+#prvbut:hover, #nxtbut:hover {
+    width: 4.4%;
 }
