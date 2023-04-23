@@ -23,11 +23,11 @@
     align-items: center;
 }
 .topics img {
-    margin: 0.51%;
-    width: 6.8%;
-    height: auto;
-    border: 0.23em solid white;
     border-radius: 50%;
+    margin: 0.51%;
+    width: 8.8%;
+    height: auto;
+    border-radius: 10%;
     transition: 0.2s;
 }
 #allbut {
@@ -87,8 +87,6 @@
         margin: 0.51%;
         width: 9.8%;
         height: auto;
-        border: 0.182rem solid white;
-        border-radius: 50%;
         transition: 0.2s;
     }
     .html {
@@ -100,7 +98,7 @@
         width: 100%;
     }
     #nxtbut, #prvbut {
-        width: 3%;
+        width: 2%;
     }
     .html img {
         width: 80%;
@@ -116,7 +114,7 @@
 }
 .allposts span {
     margin: 0.51rem;
-    font-family: 8vw;
+    font-size: 1vw;
 }
 #nxtbut {
     width: 4%;
@@ -124,7 +122,4 @@
 #prvbut {
     width: 4%;
     transform: scaleX(-1);
-}
-#prvbut:hover, #nxtbut:hover {
-    width: 4.4%;
 }
