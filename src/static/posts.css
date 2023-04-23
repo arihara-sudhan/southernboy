@@ -97,7 +97,10 @@
     .posts {
         width: 100%;
     }
-    #nxtbut, #prvbut {
+    #nxtbut {
+        width: 2%;
+    }
+    #prvbut {
         width: 2%;
     }
     .html img {
