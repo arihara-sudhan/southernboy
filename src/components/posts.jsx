@@ -50,7 +50,7 @@ export default function Posts(){
               setSet([set[0]-TOTALTOPS,set[0]-1])
           }}/>
           {logos}
-          <img src={nxtprv} alt='' style={{border:0,borderRadius:0}} onClick={()=>{
+          <img src={nxtprv} alt='' style={{border:0,borderRadius:0}} id='nxtbut' onClick={()=>{
             setSet([set[1]+1,set[1]+TOTALTOPS])
           }}/>
         </div>
