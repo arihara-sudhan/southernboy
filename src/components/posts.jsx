@@ -48,6 +48,7 @@ export default function Posts(){
       toshow = allposts;
     else
       toshow = posttoshow;
+    
     return (
       <div className='blog-all'>
         <div className='topics'>
