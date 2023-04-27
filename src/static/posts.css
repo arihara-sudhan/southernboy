@@ -71,6 +71,9 @@
     #allbut {
         font-size: 3vw;
     }
+    #date {
+        font-size: 2vw;
+    }
     .topics {
         background-color: #2b2a33;
         width: 98%;
@@ -89,7 +92,7 @@
         transition: 0.2s;
     }
     .html {
-        font-size: 4vw;
+        font-size: 2.3vw;
         font-weight: lighter;
         text-align: justify;
         text-justify: inter-word;
@@ -115,8 +118,8 @@
     margin-top: 3vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
 }
 .allposts span {
     margin: 0.51rem;
