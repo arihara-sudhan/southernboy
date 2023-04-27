@@ -2,6 +2,7 @@ import React from 'react'
 import '../static/posts.css'
 import axios from 'axios'
 import nxtprv from '../static/nxtprv.png'
+import loaf from '../static/loaf.gif'
 
 function getn(f,l,arr){
     let results = [];
@@ -20,6 +21,11 @@ export default function Posts(){
         setPost(response.data);
       });
     }, []);
+    const [ spinner, setSpinner ] = React.useState(true);
+    React.useEffect(() => {
+      setTimeout(() => setSpinner(false), 1000)
+    }, []);
+
     if(post==null) return null;
     let allposts = post.map((t)=>
       <span onClick={()=>{setWhich(t.num); setShowPosts(0)}}>► {t.title}</span>
@@ -34,8 +40,11 @@ export default function Posts(){
               <h3 id='title'>{post[which].title}<span id='date'>{post[which].feeds[0]}</span></h3>
             <div className='html' dangerouslySetInnerHTML={{__html: post[which].feeds[1]}}></div>
         </div>;
+ 
     let toshow = null;
-    if(showposts===1)
+    if(spinner)
+      toshow =  <center id='loaf'><img src={loaf} width='40%'/><span>KINDLY WAIT</span></center>;
+    else if(showposts===1)
       toshow = allposts;
     else
       toshow = posttoshow;
