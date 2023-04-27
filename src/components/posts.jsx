@@ -9,7 +9,6 @@ function getn(f,l,arr){
       results.push(arr[i%arr.length]);
     return results;
 }
-
 export default function Posts(){
     const TOTALTOPS = 5;
     const [post, setPost] = React.useState(null);
@@ -23,24 +22,23 @@ export default function Posts(){
     }, []);
     if(post==null) return null;
     let allposts = post.map((t)=>
-      <span onClick={()=>{setWhich(t.num); setShowPosts(0)}}>► {t.title} ◄</span>
+      <span onClick={()=>{setWhich(t.num); setShowPosts(0)}}>► {t.title}</span>
     );
     allposts = <div className='allposts'>{allposts}</div>
     let logos = post.map((l) =>
       <img src={l.logo} alt='' onClick={()=>{setWhich(l.num); setShowPosts(0)}} title={l.topic}/>
     );
     logos = getn(set[0],set[1],logos);
-    const posts = post.map((p) =>
+    const posttoshow = 
         <div className='post'>
-              <h3 id='title'>{p.title}<span id='date'>{p.feeds[0]}</span></h3>
-            <div className='html' dangerouslySetInnerHTML={{__html: p.feeds[1]}}></div>
-        </div>  
-  );
+              <h3 id='title'>{post[which].title}<span id='date'>{post[which].feeds[0]}</span></h3>
+            <div className='html' dangerouslySetInnerHTML={{__html: post[which].feeds[1]}}></div>
+        </div>;
     let toshow = null;
     if(showposts===1)
       toshow = allposts;
     else
-      toshow = posts[parseInt(which)]
+      toshow = posttoshow;
     return (
       <div className='blog-all'>
         <div className='topics'>
