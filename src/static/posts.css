@@ -12,7 +12,7 @@
     margin-bottom: 10vh;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 80%;
     margin-top: 1%;
 }
 .topics {
@@ -108,14 +108,14 @@
         width: 3%;
     }
     .blog-all {
-        width: 95%;
+        width: 93%;
     }
 }
 .allposts {
     margin-top: 3vh;
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
 }
 .allposts span {
@@ -131,4 +131,18 @@
 }
 #prvbut:hover, #nxtbut:hover {
     width: 4.4%;
+}
+#loaf {
+    margin-top: 10%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.2vw;
+}
+
+#loaf span {
+    margin-top: 4%;
 }
