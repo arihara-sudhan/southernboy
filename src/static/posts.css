@@ -63,6 +63,7 @@
 .html img {
     margin: 0.41rem;
     margin-bottom: 0;
+    width: 80%;
 }
 .posts {
     width: 80%;
@@ -98,7 +99,7 @@
         text-justify: inter-word;
     }
     .html img {
-        width: 90%;
+        width: 97%;
     }
     #title {
         font-size: 3vw;
