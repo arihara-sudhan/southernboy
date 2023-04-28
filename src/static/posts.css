@@ -63,10 +63,10 @@
 .html img {
     margin: 0.41rem;
     margin-bottom: 0;
-    width: 95%;
+    width: 99%;
 }
 .posts {
-    width: 80%;
+    width: 90%;
 }
 @media only screen and (max-width: 1000px) {
     #allbut {
