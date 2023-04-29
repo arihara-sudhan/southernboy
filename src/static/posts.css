@@ -12,7 +12,7 @@
     margin-bottom: 10vh;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 80%;
     margin-top: 1%;
 }
 .topics {
@@ -55,7 +55,7 @@
     font-size: 1vw;
 }
 .html {
-    font-size: 1.4vw;
+    font-size: 1vw;
     font-weight: lighter;
     text-align: justify;
     text-justify: inter-word;
@@ -63,10 +63,25 @@
 .html img {
     margin: 0.41rem;
     margin-bottom: 0;
-    width: 99%;
+    width: 80%;
 }
 .posts {
-    width: 90%;
+    width: 80%;
+}
+
+.iframe {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+}
+  
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 @media only screen and (max-width: 1000px) {
     #allbut {
@@ -93,7 +108,7 @@
         transition: 0.2s;
     }
     .html {
-        font-size: 2.8vw;
+        font-size: 2.3vw;
         font-weight: lighter;
         text-align: justify;
         text-justify: inter-word;
