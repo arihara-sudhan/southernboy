@@ -1,70 +1,142 @@
-import React from 'react'
-import '../static/posts.css'
-import axios from 'axios'
-import nxtprv from '../static/nxtprv.png'
-import loaf from '../static/loaf.gif'
+import '../static/posts.css';
+import React, { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
+import nxtprv from '../static/nxtprv.png';
+import loaf from '../static/loaf.gif';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 
-function getn(f,l,arr){
-    let results = [];
-    for(let i=f;i<=l;i++)
-      results.push(arr[i%arr.length]);
-    return results;
-}
-export default function Posts(){
-    const TOTALTOPS = 5;
-    const [post, setPost] = React.useState(null);
-    const [which,setWhich] = React.useState(0);
-    const [set,setSet] = React.useState([0,TOTALTOPS-1]);
-    const [showposts,setShowPosts] = React.useState(0);
-    React.useEffect(() => {
-      axios.get('https://arisblog.onrender.com/getPosts').then((response) => {
-        setPost(response.data);
-      });
-    }, []);
-    const [ spinner, setSpinner ] = React.useState(true);
-    React.useEffect(() => {
-      setTimeout(() => setSpinner(false), 1000)
-    }, []);
+export default function Posts() {
+  const { id } = useParams();
+  const TOTALTOPS = 5;
+  const [posts, setPosts] = useState([]);
+  const [which, setWhich] = useState(0);
+  const [set, setSet] = useState([0, TOTALTOPS - 1]);
+  const [showPosts, setShowPosts] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-    if(post==null) return null;
-    let allposts = post.map((t)=>
-      <span onClick={()=>{setWhich(t.num); setShowPosts(0)}}>► {t.title}</span>
-    );
-    allposts = <div className='allposts'>{allposts}</div>
-    let logos = post.map((l) =>
-      <img src={l.logo} alt='' onClick={()=>{setWhich(l.num); setShowPosts(0)}} title={l.topic}/>
-    );
-    logos = getn(set[0],set[1],logos);
-    const posttoshow = 
-        <div className='post'>
-              <h3 id='title'>{post[which].title}<span id='date'>{post[which].feeds[0]}</span></h3>
-            <div className='html' dangerouslySetInnerHTML={{__html: post[which].feeds[1]}}></div>
-        </div>;
- 
-    let toshow = null;
-    if(spinner)
-      toshow =  <center id='loaf'><img src={loaf} width='40%'/><span>KINDLY WAIT</span></center>;
-    else if(showposts===1)
-      toshow = allposts;
-    else
-      toshow = posttoshow;
-    
+  useEffect(() => {
+    axios.get('http://localhost:5000/getPosts/').then((response) => {
+      setPosts(response.data);
+      setLoading(false);
+    });
+  }, []);
+
+  const navigateToPost = useCallback(
+    (index) => {
+      setWhich(index);
+      navigate(`/${index}`);
+      setShowPosts(false);
+    },
+    [navigate]
+  );
+
+  const navigateToPrevSet = useCallback(() => {
+    if (set[0] - TOTALTOPS >= 0 && set[0] - 1 >= 0) {
+      setSet([set[0] - TOTALTOPS, set[0] - 1]);
+    }
+  }, [set]);
+
+  const navigateToNextSet = useCallback(() => {
+    if (set[1] + 1 < posts.length) {
+      setSet([set[0] + 1, set[1] + 1]);
+    }
+  }, [set, posts.length]);
+  
+
+  const toggleShowPosts = useCallback(() => {
+    setShowPosts((prevState) => !prevState);
+  }, []);
+
+  const preventDragHandler = (event) => {
+    event.preventDefault();
+  };
+
+  const preventContextMenuHandler = (event) => {
+    event.preventDefault();
+  };
+
+  const renderPost = () => {
+    if (posts.length === 0) return null;
+
+    const post = posts[which];
+    const sanitizedHTML = DOMPurify.sanitize(post.feeds[1]);
+
     return (
-      <div className='blog-all'>
-        <div className='topics'>
-          <img src={nxtprv} alt='' style={{border:0,borderRadius:0}} id='prvbut'  onClick={()=>{
-            if(set[0]-TOTALTOPS>0&&set[0]-1>0)
-              setSet([set[0]-TOTALTOPS,set[0]-1])
-          }}/>
-          {logos}
-          <img id='nxtbut' src={nxtprv} alt='' style={{border:0,borderRadius:0}} onClick={()=>{
-            setSet([set[1]+1,set[1]+TOTALTOPS])
-          }}/>
-        </div>
-        <button id='allbut' onClick={()=>setShowPosts(1)}>ALL POSTS</button>
-        <div className='posts'>
-          {toshow}
-        </div>
+      <div className='post'>
+        <h3 id='title'>
+          {post.title}
+          <span id='date'>{post.feeds[0]}</span>
+        </h3>
+        <div
+          className='html'
+          dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
+          onDragStart={preventDragHandler}
+          onContextMenu={preventContextMenuHandler}
+        ></div>
       </div>
     );
+  };
+
+  const renderAllPosts = () => {
+    return (
+      <div className='allposts'>
+        {posts.map((post) => (
+          <span key={post.num} onClick={() => navigateToPost(post.num)}>
+            ► {post.title}
+          </span>
+        ))}
+      </div>
+    );
+  };
+
+  const renderLogos = () => {
+    const logos = posts.map((post) => (
+      <img
+        key={post.num}
+        src={post.logo}
+        alt=''
+        onClick={() => navigateToPost(post.num)}
+        title={post.topic}
+        onDragStart={preventDragHandler}
+        onContextMenu={preventContextMenuHandler}
+      />
+    ));
+
+    return logos.slice(set[0], set[1] + 1);
+  };
+
+  return (
+    <div className='blog-all'>
+      <div className='topics'>
+        <img
+          src={nxtprv}
+          alt=''
+          style={{ border: 0, borderRadius: 0 }}
+          id='prvbut'
+          onClick={navigateToPrevSet}
+        />
+        {renderLogos()}
+        <img
+          id='nxtbut'
+          src={nxtprv}
+          alt=''
+          style={{ border: 0, borderRadius: 0 }}
+          onClick={navigateToNextSet}
+        />
+      </div>
+      <button id='allpostsbutton' onClick={toggleShowPosts}>
+        All Posts
+      </button>
+      <div className='content'>
+        {showPosts ? renderAllPosts() : renderPost()}
+        {loading && (
+          <div className='loader-container'>
+            <img src={loaf} alt='Loading' className='loader' />
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
