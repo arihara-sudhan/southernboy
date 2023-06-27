@@ -84,6 +84,12 @@ iframe {
     right: 0;
 }
 @media only screen and (max-width: 1000px) {
+    .html {
+        font-size: 1vw;
+        font-weight: lighter;
+        text-align: left;
+    }
+
     #allbut {
         font-size: 3vw;
     }
