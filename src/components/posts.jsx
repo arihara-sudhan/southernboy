@@ -4,7 +4,6 @@ import axios from 'axios';
 import nxtprv from '../static/nxtprv.png';
 import loaf from '../static/loaf.gif';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import DOMPurify from 'dompurify';
 
 export default function Posts() {
   const { id } = useParams();
@@ -61,7 +60,6 @@ export default function Posts() {
     if (posts.length === 0) return null;
 
     const post = posts[which];
-    const sanitizedHTML = DOMPurify.sanitize(post.feeds[1]);
 
     return (
       <div className='post'>
@@ -71,7 +69,7 @@ export default function Posts() {
         </h3>
         <div
           className='html'
-          dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
+          dangerouslySetInnerHTML={{ __html: post.feeds[1] }}
           onDragStart={preventDragHandler}
           onContextMenu={preventContextMenuHandler}
         ></div>
