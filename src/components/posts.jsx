@@ -1,3 +1,4 @@
+import '../static/posts.css';
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import nxtprv from '../static/nxtprv.png';
@@ -21,18 +22,6 @@ export default function Posts() {
     });
   }, []);
 
-  useEffect(() => {
-    if (id) {
-      const postId = parseInt(id);
-      if (!isNaN(postId) && postId >= 0 && postId < posts.length) {
-        setWhich(postId);
-        setShowPosts(false);
-      } else {
-        navigate('/');
-      }
-    }
-  }, [id, posts.length, navigate]);
-
   const navigateToPost = useCallback(
     (index) => {
       setWhich(index);
@@ -54,6 +43,7 @@ export default function Posts() {
     }
   }, [set, posts.length]);
   
+
   const toggleShowPosts = useCallback(() => {
     setShowPosts((prevState) => !prevState);
   }, []);
