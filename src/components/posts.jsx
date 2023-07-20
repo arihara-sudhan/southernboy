@@ -1,4 +1,3 @@
-import '../static/posts.css';
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import nxtprv from '../static/nxtprv.png';
