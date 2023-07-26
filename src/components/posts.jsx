@@ -23,6 +23,18 @@ export default function Posts() {
     });
   }, []);
 
+
+    useEffect(() => {
+    axios.get(`https://arisblog.onrender.com/getPost/${id}`).then((response) => {
+      setCurrentPost(response.data.feeds[1]);
+      setLoading(false);
+    }).catch((error) => {
+      // Handle error if the post is not found or other issues with the request
+      setLoading(false);
+    });
+  }, [id]);
+  
+  
   // Function to navigate to a specific post
   const navigateToPost = useCallback(
     (index) => {
