@@ -20,6 +20,7 @@ useEffect(() => {
   axios.get(`https://arisblog.onrender.com/${id}`).then((response) => {
     navigateToPost(5)
   }).catch((error) => {
+    console.log('AAMOIIII');
     console.log(error);
     setLoading(false);
   });
