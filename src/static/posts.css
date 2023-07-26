@@ -110,13 +110,13 @@ iframe {
         transition: 0.2s;
     }
     .html {
-        font-size: 2.3vw;
+        font-size: 2.39vw;
         text-align: justify;
         text-justify: inter-word;
     }
     .html img {
-        width: 95%;
-        border-radius: 0.81em;
+        width: 100%;
+        border-radius: 0.31em;
     }
     #title {
         font-size: 5vw;
