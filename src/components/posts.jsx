@@ -4,6 +4,8 @@ import nxtprv from '../static/nxtprv.png';
 import loaf from '../static/loaf.gif';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../static/posts.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 
 export default function Posts() {
   const TOTALTOPS = 5;
@@ -72,6 +74,7 @@ export default function Posts() {
 
   return (
     <div className='blog-all'>
+      <Route path="/rendu" exact component={navigateToPost(2)} />
       <div className='topics'>
         <img
           src={nxtprv}
