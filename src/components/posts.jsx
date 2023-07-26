@@ -17,7 +17,7 @@ export default function Posts() {
   const navigate = useNavigate();
 
 useEffect(() => {
-  axios.get(`https://arisblog.onrender.com/getPost/${id}`).then((response) => {
+  axios.get(`https://arisblog.onrender.com/${id}`).then((response) => {
     const postData = response.data.feeds[id];
     setCurrentPost(postData);
     setLoading(false);
