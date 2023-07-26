@@ -3,7 +3,7 @@ import Banner from './components/banner';
 import Posts from './components/posts';
 import End from './components/end';
 import './App.css';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
 function App() {
@@ -21,7 +21,10 @@ function App() {
       <Router>
       <div className="app">
         <Banner />
-        <Posts/>
+        <Routes>
+          <Route path="/" element={<Posts />}/>
+          <Route path="/:id" element={<Posts/>}/>
+        </Routes>
         <End />
       </div>
       </Router>
