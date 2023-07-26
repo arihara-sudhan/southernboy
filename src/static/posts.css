@@ -85,7 +85,9 @@ iframe {
 }
 
 @media only screen and (max-width: 1000px) {
-
+    span {
+        margin: 0.4rem;
+    }
     #allbut {
         font-size: 5vw;
     }
