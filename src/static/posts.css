@@ -55,14 +55,13 @@
     font-size: 1vw;
 }
 .html {
-    font-size: 2.35vw;
+    font-size: 1.25vw;
     font-weight: lighter;
     text-align: justify;
     text-justify: inter-word;
 }
 .html img {
-    margin: 0.8rem;
-    margin-bottom: 0.3;
+    margin: 1.008rem;
     width: 100%;
 }
 .posts {
@@ -109,13 +108,13 @@ iframe {
         transition: 0.2s;
     }
     .html {
-        font-size: 2.9vw;
+        font-size: 2.3vw;
         text-align: justify;
         text-justify: inter-word;
     }
     .html img {
         width: 95%;
-        border: 3px solid white;
+        marging: 1em;
         border-radius: 1em;
     }
     #title {
