@@ -16,15 +16,9 @@ export default function Posts() {
   const [currentPost, setCurrentPost] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get('https://arisblog.onrender.com/getPosts/').then((response) => {
-      setPosts(response.data);
-      setLoading(false);
-    });
-  }, []);
 
 
-    useEffect(() => {
+   useEffect(() => {
     axios.get(`https://arisblog.onrender.com/getPost/${id}`).then((response) => {
       setCurrentPost(response.data.feeds[1]);
       setLoading(false);
@@ -34,6 +28,14 @@ export default function Posts() {
     });
   }, [id]);
   
+  
+  useEffect(() => {
+    axios.get('https://arisblog.onrender.com/getPosts/').then((response) => {
+      setPosts(response.data);
+      setLoading(false);
+    });
+  }, []);
+
   
   // Function to navigate to a specific post
   const navigateToPost = useCallback(
