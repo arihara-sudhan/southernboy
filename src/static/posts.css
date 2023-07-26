@@ -64,7 +64,6 @@
     text-justify: inter-word;
 }
 .html img {
-    margin: 0.2rem;
     width: 100%;
 }
 .posts {
@@ -117,8 +116,7 @@ iframe {
     }
     .html img {
         width: 95%;
-        marging: 0.201em;
-        border-radius: 1em;
+        border-radius: 0.81em;
     }
     #title {
         font-size: 5vw;
