@@ -17,6 +17,17 @@ export default function Posts() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    axios.get(`https://arisblog.onrender.com/getPost/${id}`).then((response) => {
+      setCurrentPost(response.data.feeds[1]);
+      setLoading(false);
+    }).catch((error) => {
+      // Handle error if the post is not found or other issues with the request
+      setLoading(false);
+    });
+  }, [id]);
+  
+  
+  useEffect(() => {
     axios.get('https://arisblog.onrender.com/getPosts/').then((response) => {
       setPosts(response.data);
       setLoading(false);
