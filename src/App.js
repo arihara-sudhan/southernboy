@@ -20,10 +20,7 @@ function App() {
     <Router>
       <div className="app">
         <Banner />
-        <Routes>
-          <Route path="/rendu" render={() => <Posts id='1' />} />
-          <Route path="/" element={<Posts/>} />
-        </Routes>
+        <Posts/>
         <End />
       </div>
     </Router>
