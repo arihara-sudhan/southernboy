@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Router, Routes ,Route } from 'react-router-dom';
 import Banner from './components/banner';
 import Posts from './components/posts';
 import End from './components/end';
@@ -25,10 +20,10 @@ function App() {
     <Router>
       <div className="app">
         <Banner />
-        <Switch>
+        <Routes>
           <Route path="/rendu" render={() => <Posts id='1' />} />
-          <Route path="/" component={Posts} />
-        </Switch>
+          <Route path="/" element={<Posts/>} />
+        </Routes>
         <End />
       </div>
     </Router>
