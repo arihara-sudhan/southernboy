@@ -9,10 +9,11 @@ export default function Posts() {
   const { id } = useParams();
   const TOTALTOPS = 5;
   const [posts, setPosts] = useState([]);
-  const [which, setWhich] = useState(parseInt(id, 10) || 0); // Parse the id to an integer or default to 0 if id is not provided
+  const [which, setWhich] = useState(parseInt(id, 10) || 0);
   const [set, setSet] = useState([0, TOTALTOPS - 1]);
   const [showPosts, setShowPosts] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [currentPost, setCurrentPost] = useState(null); // New state to hold the content of the current post
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,57 +62,13 @@ export default function Posts() {
     event.preventDefault();
   };
 
-  // Function to render a single post
-  const renderPost = () => {
-    if (posts.length === 0) return null;
+  // Function to load the content of the current post
+  useEffect(() => {
+    if (posts.length === 0) return;
 
     const post = posts[which];
-
-    return (
-      <div className='post'>
-        <h3 id='title'>
-          {post.title}
-          <span id='date'>{post.feeds[0]}</span>
-        </h3>
-        <div
-          className='html'
-          dangerouslySetInnerHTML={{ __html: post.feeds[1] }}
-          onDragStart={preventDragHandler}
-          onContextMenu={preventContextMenuHandler}
-        ></div>
-      </div>
-    );
-  };
-
-  // Function to render all posts
-  const renderAllPosts = () => {
-    return (
-      <div className='allposts'>
-        {posts.map((post) => (
-          <span key={post.num} onClick={() => navigateToPost(post.num)}>
-            ► {post.title}
-          </span>
-        ))}
-      </div>
-    );
-  };
-
-  // Function to render logos for posts
-  const renderLogos = () => {
-    const logos = posts.map((post) => (
-      <img
-        key={post.num}
-        src={post.logo}
-        alt=''
-        onClick={() => navigateToPost(post.num)}
-        title={post.topic}
-        onDragStart={preventDragHandler}
-        onContextMenu={preventContextMenuHandler}
-      />
-    ));
-
-    return logos.slice(set[0], set[1] + 1);
-  };
+    setCurrentPost(post.feeds[1]);
+  }, [which, posts]);
 
   return (
     <div className='blog-all'>
@@ -123,7 +80,18 @@ export default function Posts() {
           id='prvbut'
           onClick={navigateToPrevSet}
         />
-        {renderLogos()}
+        {/* Render post logos */}
+        {posts.slice(set[0], set[1] + 1).map((post) => (
+          <img
+            key={post.num}
+            src={post.logo}
+            alt=''
+            onClick={() => navigateToPost(post.num)}
+            title={post.topic}
+            onDragStart={preventDragHandler}
+            onContextMenu={preventContextMenuHandler}
+          />
+        ))}
         <img
           id='nxtbut'
           src={nxtprv}
@@ -136,10 +104,45 @@ export default function Posts() {
         All Posts
       </button>
       <div className='content'>
-        {showPosts ? renderAllPosts() : renderPost()}
-        {loading && (
-          <div className='loader-container'>
-            <img src={loaf} alt='Loading' className='loader' />
+        {showPosts ? (
+          // Show all posts
+          <div className='allposts'>
+            {posts.map((post) => (
+              <span key={post.num} onClick={() => navigateToPost(post.num)}>
+                ► {post.title}
+              </span>
+            ))}
+          </div>
+        ) : (
+          // Show the current post
+          <div className='post'>
+            {loading ? (
+              // Show loading indicator
+              <div className='loader-container'>
+                <img src={loaf} alt='Loading' className='loader' />
+              </div>
+            ) : (
+              // Show the post content
+              <>
+                {currentPost ? (
+                  <>
+                    <h3 id='title'>
+                      {posts[which].title}
+                      <span id='date'>{posts[which].feeds[0]}</span>
+                    </h3>
+                    <div
+                      className='html'
+                      dangerouslySetInnerHTML={{ __html: currentPost }}
+                      onDragStart={preventDragHandler}
+                      onContextMenu={preventContextMenuHandler}
+                    />
+                  </>
+                ) : (
+                  // Show a message if the post content is not loaded yet
+                  <p>Loading post content...</p>
+                )}
+              </>
+            )}
           </div>
         )}
       </div>
