@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap');
+
 * {
     color: white;
+    font-family: 'Ubuntu Condensed', sans-serif;
 }
 .blog-all {
     padding: 0.6em;
