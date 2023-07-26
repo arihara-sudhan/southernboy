@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import nxtprv from '../static/nxtprv.png';
 import loaf from '../static/loaf.gif';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../static/posts.css';
 
 export default function Posts() {
