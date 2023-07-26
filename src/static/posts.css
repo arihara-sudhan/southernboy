@@ -84,14 +84,9 @@ iframe {
 }
 
 @media only screen and (max-width: 1000px) {
-    .html {
-        font-size: 2.4vw;
-        font-weight: lighter;
-        text-align: left;
-    }
 
     #allbut {
-        font-size: 3vw;
+        font-size: 5vw;
     }
     #date {
         font-size: 2vw;
@@ -114,26 +109,27 @@ iframe {
         transition: 0.2s;
     }
     .html {
-        font-size: 2.3vw;
-        font-weight: lighter;
+        font-size: 4.3vw;
         text-align: justify;
         text-justify: inter-word;
     }
     .html img {
-        width: 97%;
+        width: 95%;
+        border: 3px solid white;
+        border-radius: 1em;
     }
     #title {
-        font-size: 3vw;
+        font-size: 5vw;
         font-weight: bolder;
     }
-        .posts {
+    .posts {
         width: 100%;
     }
     #nxtbut, #prvbut {
         width: 3%;
     }
     .blog-all {
-        width: 93%;
+        width: 94%;
     }
 }
 .allposts {
