@@ -4,18 +4,16 @@ import nxtprv from '../static/nxtprv.png';
 import loaf from '../static/loaf.gif';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../static/posts.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 
 export default function Posts() {
+  const { id } = useParams();
   const TOTALTOPS = 5;
   const [posts, setPosts] = useState([]);
-  const { id } = useParams();
   const [which, setWhich] = useState(parseInt(id, 10) || 0);
   const [set, setSet] = useState([0, TOTALTOPS - 1]);
   const [showPosts, setShowPosts] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [currentPost, setCurrentPost] = useState(null);
+  const [currentPost, setCurrentPost] = useState(null); // New state to hold the content of the current post
   const navigate = useNavigate();
 
   useEffect(() => {
