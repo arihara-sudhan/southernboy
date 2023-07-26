@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Router, Routes ,Route } from 'react-router-dom';
 import Banner from './components/banner';
 import Posts from './components/posts';
 import End from './components/end';
@@ -17,14 +16,11 @@ function App() {
   }
 
   return (
-    <Router>
       <div className="app">
         <Banner />
         <Posts/>
         <End />
       </div>
-    </Router>
-
 );
 }
 
