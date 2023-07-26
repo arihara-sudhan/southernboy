@@ -18,9 +18,7 @@ export default function Posts() {
 
 useEffect(() => {
   axios.get(`https://arisblog.onrender.com/${id}`).then((response) => {
-    const postData = response.data.feeds[id];
-    setCurrentPost(postData);
-    setLoading(false);
+    navigateToPost(id);
   }).catch((error) => {
     // Handle error if the post is not found or other issues with the request
     setLoading(false);
@@ -158,6 +156,7 @@ useEffect(() => {
           </div>
         )}
       </div>
+      <button onClick={() => navigateToPost(5)}>CLICK ME</button>
     </div>
   );
 }
