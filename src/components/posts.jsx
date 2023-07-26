@@ -18,9 +18,9 @@ export default function Posts() {
 
 useEffect(() => {
   axios.get(`https://arisblog.onrender.com/${id}`).then((response) => {
-    navigateToPost(id);
+    navigateToPost(5)
   }).catch((error) => {
-    // Handle error if the post is not found or other issues with the request
+    console.log(error);
     setLoading(false);
   });
 }, [id]);
@@ -156,7 +156,6 @@ useEffect(() => {
           </div>
         )}
       </div>
-      <button onClick={() => navigateToPost(5)}>CLICK ME</button>
     </div>
   );
 }
