@@ -7,11 +7,11 @@ import '../static/posts.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
-export default function Posts() {
+export default function Posts(props) {
   const TOTALTOPS = 5;
   const [posts, setPosts] = useState([]);
   const { id } = useParams();
-  const [which, setWhich] = useState(parseInt(id, 10) || 0);
+  const [which, setWhich] = useState(parseInt(id, 10) || props.id || 0);
   const [set, setSet] = useState([0, TOTALTOPS - 1]);
   const [showPosts, setShowPosts] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -74,7 +74,6 @@ export default function Posts() {
 
   return (
     <div className='blog-all'>
-      <Route path="/rendu" exact component={navigateToPost(2)} />
       <div className='topics'>
         <img
           src={nxtprv}
