@@ -64,13 +64,15 @@ export default function Posts() {
     event.preventDefault();
   };
 
-  useEffect(() => {
-    if (posts.length === 0) return;
-
-    const post = posts[which];
-    setCurrentPost(post.feeds[1]);
-  }, [which, posts]);
-
+   useEffect(() => {
+    if (isLoaded && posts.length > 0) {
+      // Posts are loaded and not empty
+      const post = posts[which];
+      setCurrentPost(post.feeds[1]);
+      setLoading(false);
+    }
+  }, [isLoaded, which, posts]);
+  
   return (
     <div className='blog-all'>
       <div className='topics'>
