@@ -29,8 +29,10 @@ export default function Posts() {
       setWhich(index);
       navigate(`/${index}`);
       setShowPosts(false);
+      // Update the current post content immediately when a new post is selected
+      setCurrentPost(posts[index]?.feeds[1] || null);
     },
-    [navigate]
+    [navigate, posts]
   );
 
   // Function to navigate to the previous set of posts
@@ -62,7 +64,6 @@ export default function Posts() {
     event.preventDefault();
   };
 
-  // Function to load the content of the current post
   useEffect(() => {
     if (posts.length === 0) return;
 
