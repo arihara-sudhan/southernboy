@@ -14,12 +14,13 @@ export default function Posts() {
   const [showPosts, setShowPosts] = useState(false);
   const [loading, setLoading] = useState(true);
   const [currentPost, setCurrentPost] = useState(null); // New state to hold the content of the current post
+  const [isLoaded, setIsLoaded] = useState(false); // New state to track whether posts are loaded
   const navigate = useNavigate();
-
-  useEffect(() => {
+  
+ useEffect(() => {
     axios.get('https://arisblog.onrender.com/getPosts/').then((response) => {
       setPosts(response.data);
-      setLoading(false);
+      setIsLoaded(true); // Set isLoaded to true once the posts are fetched
     });
   }, []);
 
@@ -29,12 +30,9 @@ export default function Posts() {
       setWhich(index);
       navigate(`/${index}`);
       setShowPosts(false);
-      // Update the current post content immediately when a new post is selected
-      setCurrentPost(posts[index]?.feeds[1] || null);
     },
-    [navigate, posts]
+    [navigate]
   );
-
   // Function to navigate to the previous set of posts
   const navigateToPrevSet = useCallback(() => {
     if (set[0] - TOTALTOPS >= 0 && set[0] - 1 >= 0) {
