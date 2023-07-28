@@ -117,8 +117,7 @@ iframe {
         text-justify: inter-word;
     }
     .html img {
-        width: 100%;
-        border-radius: 0.31em;
+        width: 99%;
     }
     #title {
         font-size: 5vw;
