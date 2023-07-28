@@ -116,9 +116,15 @@ iframe {
         text-align: justify;
         text-justify: inter-word;
     }
-    .html img {
-        width: 99%;
+    .html {
+        font-size: 4.39vw;
+        text-align: justify;
+        text-justify: inter-word;
     }
+    .html img {
+        max-width: 100%;
+    }
+    
     #title {
         font-size: 5vw;
         font-weight: bolder;
