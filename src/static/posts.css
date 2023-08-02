@@ -210,3 +210,84 @@ iframe {
     font-size: 12px;
     font-weight: bold;
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    .container {
+      max-width: 500px;
+      width: 90%;
+      background-color: black;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .upper-part {
+      border-radius: 10px 10px 0 0;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      background-color: lightgreen;
+    }
+
+
+    .red {
+      background-color: red;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .code {
+      display: flex;
+      font-family: "Courier New", monospace;
+      white-space: pre-wrap;
+      color: lightgreen;
+      font-size: 1.25vw;
+      font-weight: lighter;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 10px;
+      transition: 0.2s;
+    }
+
+    /* Media query for responsive design */
+    @media only screen and (max-width: 1000px) {
+      .code {
+        font-size: 4.39vw;
+      }
+
+      .container {
+        width: 94%;
+      }
+    }
