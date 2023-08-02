@@ -231,8 +231,8 @@ iframe {
   
   
     .container {
-      max-width: 500px;
-      width: 90%;
+      max-width: 98%;
+      width: 60%;
       background-color: black;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -284,10 +284,10 @@ iframe {
     /* Media query for responsive design */
     @media only screen and (max-width: 1000px) {
       .code {
-        font-size: 4.39vw;
+        font-size: 3.6vw;
       }
 
       .container {
-        width: 96%;
+        width: 98%;
       }
     }
