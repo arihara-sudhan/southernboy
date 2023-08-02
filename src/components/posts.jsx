@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import axios from 'axios';
 import nxtprv from '../static/nxtprv.png';
 import loaf from '../static/loaf.gif';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../static/posts.css';
 
 export default function Posts() {
@@ -13,16 +13,21 @@ export default function Posts() {
   const [set, setSet] = useState([0, TOTALTOPS - 1]);
   const [showPosts, setShowPosts] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [currentPost, setCurrentPost] = useState(null); // New state to hold the content of the current post
-  const [isLoaded, setIsLoaded] = useState(false); // New state to track whether posts are loaded
   const navigate = useNavigate();
-  
- useEffect(() => {
+
+  // Fetch posts on component mount
+  useEffect(() => {
     axios.get('https://arisblog.onrender.com/getPosts/').then((response) => {
       setPosts(response.data);
-      setIsLoaded(true); // Set isLoaded to true once the posts are fetched
+      setLoading(false);
     });
   }, []);
+
+  // Memoized function to load the content of the current post
+  const currentPost = useMemo(() => {
+    if (posts.length === 0) return null;
+    return posts[which].feeds[1];
+  }, [which, posts]);
 
   // Function to navigate to a specific post
   const navigateToPost = useCallback(
@@ -33,12 +38,13 @@ export default function Posts() {
     },
     [navigate]
   );
+
   // Function to navigate to the previous set of posts
   const navigateToPrevSet = useCallback(() => {
     if (set[0] - TOTALTOPS >= 0 && set[0] - 1 >= 0) {
       setSet([set[0] - TOTALTOPS, set[0] - 1]);
     }
-  }, [set]);
+  }, [set, TOTALTOPS]);
 
   // Function to navigate to the next set of posts
   const navigateToNextSet = useCallback(() => {
@@ -53,24 +59,15 @@ export default function Posts() {
   }, []);
 
   // Prevent drag event handler
-  const preventDragHandler = (event) => {
+  const preventDragHandler = useCallback((event) => {
     event.preventDefault();
-  };
+  }, []);
 
   // Prevent context menu event handler
-  const preventContextMenuHandler = (event) => {
+  const preventContextMenuHandler = useCallback((event) => {
     event.preventDefault();
-  };
+  }, []);
 
-   useEffect(() => {
-    if (isLoaded && posts.length > 0) {
-      // Posts are loaded and not empty
-      const post = posts[which];
-      setCurrentPost(post.feeds[1]);
-      setLoading(false);
-    }
-  }, [isLoaded, which, posts]);
-  
   return (
     <div className='blog-all'>
       <div className='topics'>
