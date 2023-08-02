@@ -5,8 +5,6 @@
     font-family: 'Hanken Grotesk', sans-serif;
 }
 
-
-
 .blog-all {
     padding: 0.6em;
     border-radius: 0.2em;
@@ -21,6 +19,7 @@
     width: 60%;
     margin-top: 1%;
 }
+
 .topics {
     background-color: #2b2a33;
     width: 100%;
@@ -119,18 +118,13 @@ iframe {
         text-align: justify;
         text-justify: inter-word;
     }
-    .html {
-        font-size: 4.39vw;
-        text-align: justify;
-        text-justify: inter-word;
-    }
     
     #title {
         font-size: 5vw;
         font-weight: bolder;
     }
     .posts {
-        width: 100%;
+        width: 90%;
     }
     #nxtbut, #prvbut {
         width: 3%;
@@ -140,6 +134,7 @@ iframe {
     }
 }
 .allposts {
+    font-size: 1.32rem;
     margin-top: 3vh;
     display: flex;
     flex-direction: column;
@@ -213,4 +208,3 @@ iframe {
     font-size: 12px;
     font-weight: bold;
   }
-  
